@@ -10,6 +10,10 @@ namespace ApiParanaBanco.Controllers
         private static List<Cliente> cliente = new();
         public static List<Cliente> Clientes { get => cliente; set => cliente = value; }
 
+        /// <summary>
+        /// Obter todos os clientes
+        /// </summary>
+        /// <returns>JSON com lista de Clientes cadastrados</returns>
         // GET: api/<ClientesController>
         [HttpGet]
         public IActionResult Get()
@@ -24,6 +28,11 @@ namespace ApiParanaBanco.Controllers
             }
         }
 
+        /// <summary>
+        /// Obter dados do cliente por email
+        /// </summary>
+        /// <param name="email">email do cliente</param>
+        /// <returns></returns>
         // GET api/<ClientesController>/5
         [HttpGet("{email}")]
         public IActionResult Get(string email)
@@ -79,6 +88,12 @@ namespace ApiParanaBanco.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualizar um cliente cadastrado na base de dados
+        /// </summary>
+        /// <param name="id">Id do cliente</param>
+        /// <param name="value">JSON com nome completo e email para atualizar</param>
+        /// <returns></returns>
         // PUT api/<ClientesController>/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Cliente value)
@@ -115,6 +130,11 @@ namespace ApiParanaBanco.Controllers
 
         }
 
+        /// <summary>
+        /// Deletar Cliente
+        /// </summary>
+        /// <param name="email">E-mail cadastrado do cliente</param>
+        /// <returns></returns>
         // DELETE api/<ClientesController>/5
         [HttpDelete("{email}")]
         public IActionResult Delete(string email)
