@@ -85,11 +85,24 @@ namespace ApiParanaBanco.Controllers
         {
             try
             {
+                //validação de dados
+                value.ValidarEmail(value);
+                value.ValidarNome(value);
+
+                //verificar se existe um cliente cadastrado pelo ID
                 Cliente? clienteOld = Clientes.FirstOrDefault(c => c.Id == id);
+
+                //verificar se o email que está tentando cadastrar já existe na base de dados
+                if (Clientes.FirstOrDefault(c=>c.Email == value.Email) != null)
+                {
+                    return BadRequest("Já existe um cliente cadastrado com este Email.");
+                }
 
                 if (clienteOld != null)
                 {
-                    clienteOld = value;
+                    Clientes.Remove(clienteOld);
+                    value.Id = id;
+                    Clientes.Add(value);
                     return Ok();
                 }
                 else return BadRequest("Cliente não encontrado na base de dados.");
@@ -103,9 +116,23 @@ namespace ApiParanaBanco.Controllers
         }
 
         // DELETE api/<ClientesController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{email}")]
+        public IActionResult Delete(string email)
         {
+            try
+            {
+                Cliente? clienteOld = Clientes.FirstOrDefault(c => c.Email == email);
+                if (clienteOld != null)
+                {
+                    Clientes.Remove(clienteOld);
+                    return Ok();
+                }
+                else return BadRequest("Cliente não encontrado na base de dados.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Ocorreu um erro ao tentar deletar cliente: " + ex.Message); ;
+            }
         }
     }
 }
