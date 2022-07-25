@@ -27,7 +27,7 @@ namespace ApiParanaBanco.Model
         /// <exception cref="Exception">Não atendeu a expectativa</exception>
         public void ValidarNome(Cliente cliente)
         {
-            if (cliente.Nome.Length < 3)
+            if (cliente.Nome.Length < 10)
             {
                 throw new Exception("Nome inválido!");
             }
@@ -40,7 +40,7 @@ namespace ApiParanaBanco.Model
         /// <exception cref="Exception">Não atendeu a expectativa</exception>
         public void ValidarEmail(Cliente cliente)
         {
-            if (!cliente.Email.Contains('@'))
+            if (!cliente.Email.Contains('@') || !cliente.Email.Contains('.'))
             {
                 throw new Exception("E-mail inválido!");
             }

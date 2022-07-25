@@ -131,7 +131,15 @@ namespace ApiParanaBanco.Controllers
         /// <param name="value">JSON com nome completo e email para atualizar</param>
         /// <remarks> Exemplo de requisição:
         /// 
-        /// PUT api/Clientes/
+        /// PUT api/Clientes/1
+        /// 
+        /// 
+        /// {
+        /// "nome": "Ewerton Guimaraes",
+        /// "email": "ewertonpg@hotmail.com"
+        /// }
+        /// 
+        /// </remarks>
         /// </remarks>
         /// <returns>Status da requisição</returns>
         /// <response code="200">Cliente atualizado com sucesso.</response>
@@ -183,7 +191,7 @@ namespace ApiParanaBanco.Controllers
         /// <returns></returns>
         /// <remarks> Exemplo de requisição:
         /// 
-        /// DELETE api/Clientes/
+        /// DELETE api/Clientes/1
         /// </remarks>
         /// <returns>Status da requisição</returns>
         /// <response code="200">Cliente removido com sucesso.</response>
