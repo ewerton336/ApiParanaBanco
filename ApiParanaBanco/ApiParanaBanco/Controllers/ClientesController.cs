@@ -9,7 +9,7 @@ namespace ApiParanaBanco.Controllers
     {
         private static List<Cliente> cliente = new();
         public static List<Cliente> Clientes { get => cliente; set => cliente = value; }
-        
+
         // GET: api/<ClientesController>
         [HttpGet]
         public IActionResult Get()
@@ -25,10 +25,26 @@ namespace ApiParanaBanco.Controllers
         }
 
         // GET api/<ClientesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{email}")]
+        public IActionResult Get(string email)
         {
-            return "value";
+            try
+            {
+                var result = Clientes.FirstOrDefault(c => c.Email == email);
+                if (result != null)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return BadRequest("e-mail Não encontrado na base de dados!");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest("Ocorreu um erro ao obter o cliente específico: " + ex.Message);
+            }
         }
 
         // POST api/<ClientesController>
@@ -45,7 +61,7 @@ namespace ApiParanaBanco.Controllers
                 //validação de dados
                 value.ValidarEmail(value);
                 value.ValidarNome(value);
-                
+
                 //verificar se já existe mesmo email já cadastrado
                 if (Clientes.FirstOrDefault(c => c.Email == value.Email) != null)
                 {
