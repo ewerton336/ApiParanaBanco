@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Esse arquivo é usado pelo processo de publicação/pacote do seu projeto Web. É possível personalizar o comportamento deste processo
+ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAm33IsHJbVkK3kCTGxqlhzAAAAAACAAAAAAAQZgAAAAEAACAAAAC2JEdcaWVfO5tCQqMi8lnHty6qEex3KyAVj17C12bE4QAAAAAOgAAAAAIAACAAAAD+3HHg2ZVtfYr0aFzLwLhOKCqJHV2CxS7Zo9fIaEd8hSAAAACCMEKN6ieE8QNp0BKFA+xSCEvAbWhcMTdKsZMSVE8q/UAAAAAC/HNWu97ScQBUvP+AEyKdGJPbllBAoUVjAoIFYNPUPl64WwG+MT6fJycEelcvKe3O85PhH5RpU1jeiCiRj6OR</EncryptedPassword>
+    <_PublishTargetUrl>ftp://62.210.189.167/ewertondev</_PublishTargetUrl>
+    <History>True|2022-07-25T19:48:32.3010563Z;False|2022-07-25T16:46:59.5444641-03:00;True|2022-07-25T16:39:27.3298557-03:00;True|2022-07-25T16:29:21.5468167-03:00;False|2022-07-25T16:27:58.5347923-03:00;True|2022-07-25T16:25:57.5865256-03:00;False|2022-07-25T16:24:39.4949361-03:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="ApiParanaBanco.deps.json">
+      <publishTime>07/25/2022 16:47:12</publishTime>
+    </File>
+    <File Include="ApiParanaBanco.dll">
+      <publishTime>07/25/2022 16:47:11</publishTime>
+    </File>
+    <File Include="ApiParanaBanco.exe">
+      <publishTime>07/25/2022 16:47:11</publishTime>
+    </File>
+    <File Include="ApiParanaBanco.pdb">
+      <publishTime>07/25/2022 16:47:11</publishTime>
+    </File>
+    <File Include="ApiParanaBanco.runtimeconfig.json">
+      <publishTime>07/25/2022 16:23:37</publishTime>
+    </File>
+    <File Include="ApiParanaBanco.xml">
+      <publishTime>07/25/2022 16:47:11</publishTime>
+    </File>
+    <File Include="appsettings.Development.json">
+      <publishTime>07/25/2022 09:03:39</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>07/25/2022 09:03:39</publishTime>
+    </File>
+    <File Include="Microsoft.OpenApi.dll">
+      <publishTime>08/29/2020 20:14:12</publishTime>
+    </File>
+    <File Include="Swashbuckle.AspNetCore.Swagger.dll">
+      <publishTime>10/16/2021 09:54:10</publishTime>
+    </File>
+    <File Include="Swashbuckle.AspNetCore.SwaggerGen.dll">
+      <publishTime>10/16/2021 09:54:36</publishTime>
+    </File>
+    <File Include="Swashbuckle.AspNetCore.SwaggerUI.dll">
+      <publishTime>10/16/2021 09:54:30</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>07/25/2022 16:47:18</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
