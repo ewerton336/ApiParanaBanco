@@ -45,7 +45,7 @@ namespace ApiParanaBanco.Controllers
         /// <param name="email">email do cliente</param>
         /// <remarks> Exemplo de requisição:
         /// 
-        /// GET api/Clientes/email%40dominio.com.br
+        /// GET api/Clientes/ewertonguimaraes2%40gmail.com
         /// </remarks>
         /// <returns>JSON com os dados do cliente</returns>
         /// <response code="200">Retorna os dados do cliente com base no email informado</response>
@@ -191,7 +191,7 @@ namespace ApiParanaBanco.Controllers
         /// <returns></returns>
         /// <remarks> Exemplo de requisição:
         /// 
-        /// DELETE api/Clientes/1
+        /// DELETE api/Clientes/ewertonguimaraes2%40gmail.com
         /// </remarks>
         /// <returns>Status da requisição</returns>
         /// <response code="200">Cliente removido com sucesso.</response>
