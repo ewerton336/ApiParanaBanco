@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
+using ApiParanaBanco.Model;
 
 namespace ApiParanaBanco.Controllers
 {
@@ -7,6 +7,8 @@ namespace ApiParanaBanco.Controllers
     [ApiController]
     public class ClientesController : ControllerBase
     {
+        private static List<Cliente> cliente = new();
+        public static List<Cliente> Clientes { get => cliente; set => cliente = value; }
         // GET: api/<ClientesController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -23,8 +25,22 @@ namespace ApiParanaBanco.Controllers
 
         // POST api/<ClientesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] Cliente value)
         {
+            try
+            {
+                if (Clientes.FirstOrDefault(c => c.Email == value.Email) != null)
+                {
+                    return BadRequest("e-mail já cadastrado!");
+                }
+                value.Id = Clientes.Count > 0 ? Clientes.Max(c => c.Id) + 1 : 1;
+                Clientes.Add(value);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Erro ao cadastrar cliente: " + ex.Message);
+            }
         }
 
         // PUT api/<ClientesController>/5
