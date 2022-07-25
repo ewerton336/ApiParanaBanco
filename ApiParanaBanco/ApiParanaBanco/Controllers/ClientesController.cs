@@ -9,11 +9,19 @@ namespace ApiParanaBanco.Controllers
     {
         private static List<Cliente> cliente = new();
         public static List<Cliente> Clientes { get => cliente; set => cliente = value; }
+        
         // GET: api/<ClientesController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                return Ok(Clientes);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Ocorreu um erro ao obter clientes: " + ex.Message);
+            }
         }
 
         // GET api/<ClientesController>/5
