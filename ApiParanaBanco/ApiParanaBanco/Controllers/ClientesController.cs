@@ -140,7 +140,6 @@ namespace ApiParanaBanco.Controllers
         /// }
         /// 
         /// </remarks>
-        /// </remarks>
         /// <returns>Status da requisição</returns>
         /// <response code="200">Cliente atualizado com sucesso.</response>
         /// <response code="400">Ocorreu um erro ao tentar atualizar cliente:  (Detalhes do erro)</response>
