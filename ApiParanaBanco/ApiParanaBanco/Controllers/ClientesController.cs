@@ -81,8 +81,25 @@ namespace ApiParanaBanco.Controllers
 
         // PUT api/<ClientesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] Cliente value)
         {
+            try
+            {
+                Cliente? clienteOld = Clientes.FirstOrDefault(c => c.Id == id);
+
+                if (clienteOld != null)
+                {
+                    clienteOld = value;
+                    return Ok();
+                }
+                else return BadRequest("Cliente não encontrado na base de dados.");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest("Ocorreu um erro ao tentar atualizar cliente: " + ex.Message); ;
+            }
+
         }
 
         // DELETE api/<ClientesController>/5
