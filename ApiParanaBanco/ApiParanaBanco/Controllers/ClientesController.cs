@@ -83,6 +83,13 @@ namespace ApiParanaBanco.Controllers
         /// <remarks> Exemplo de requisição:
         /// 
         /// POST api/Clientes/
+        /// 
+        /// 
+        /// {
+        /// "nome": "Ewerton Guimarães",
+        /// "email": "ewertonguimaraes2@gmail.com"
+        /// }
+        /// 
         /// </remarks>
         /// <returns>Status da requisição</returns>
         /// <response code="200">Cliente cadastrado com sucesso.</response>
