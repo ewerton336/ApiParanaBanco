@@ -23,11 +23,11 @@ namespace ApiParanaBanco.Model
         /// <summary>
         /// Validar nome do cliente (verificar se tem pelo menos 3 caracteres)
         /// </summary>
-        /// <param name="cliente">Nome do Cliente</param>
+        /// <param name="nome">Nome do Cliente</param>
         /// <exception cref="Exception">Não atendeu a expectativa</exception>
-        public void ValidarNome(Cliente cliente)
+        public void ValidarNome(string nome)
         {
-            if (cliente.Nome.Length < 10)
+            if (nome.Length < 10)
             {
                 throw new Exception("Nome inválido!");
             }
@@ -36,11 +36,11 @@ namespace ApiParanaBanco.Model
         /// <summary>
         /// Validar email do cliente
         /// </summary>
-        /// <param name="cliente">Email do Cliente</param>
+        /// <param name="email">Email do Cliente</param>
         /// <exception cref="Exception">Não atendeu a expectativa</exception>
-        public void ValidarEmail(Cliente cliente)
+        public void ValidarEmail(string email)
         {
-            if (!cliente.Email.Contains('@') || !cliente.Email.Contains('.'))
+            if (!email.Contains('@') || !email.Contains('.'))
             {
                 throw new Exception("E-mail inválido!");
             }

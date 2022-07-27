@@ -79,7 +79,7 @@ namespace ApiParanaBanco.Controllers
         /// <summary>
         /// Cadastro de novo Cliente
         /// </summary>
-        /// <param name="value">JSON com nome do cliente e Email</param>
+        /// <param name="cliente">JSON com nome do cliente e Email</param>
         /// <remarks> Exemplo de requisição:
         /// 
         /// POST api/Clientes/
@@ -99,23 +99,23 @@ namespace ApiParanaBanco.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
-        public IActionResult Post([FromBody] Cliente value)
+        public IActionResult Post([FromBody] Cliente cliente)
         {
             try
             {
                 //validação de dados
-                value.ValidarEmail(value);
-                value.ValidarNome(value);
+                cliente.ValidarEmail(cliente.Email);
+                cliente.ValidarNome(cliente.Nome);
 
                 //verificar se já existe mesmo email já cadastrado
-                if (Clientes.FirstOrDefault(c => c.Email == value.Email) != null)
+                if (Clientes.FirstOrDefault(c => c.Email == cliente.Email) != null)
                 {
                     return Unauthorized("Já existe um cliente cadastrado com este Email.");
                 }
                 //obter último ID
-                value.Id = Clientes.Count > 0 ? Clientes.Max(c => c.Id) + 1 : 1;
+                cliente.Id = Clientes.Count > 0 ? Clientes.Max(c => c.Id) + 1 : 1;
                 //Cadastrar cliente na Lista
-                Clientes.Add(value);
+                Clientes.Add(cliente);
                 return Ok();
             }
             catch (Exception ex)
@@ -128,7 +128,7 @@ namespace ApiParanaBanco.Controllers
         /// Atualizar um cliente cadastrado na base de dados
         /// </summary>
         /// <param name="id">Id do cliente a atualizar</param>
-        /// <param name="value">JSON com nome completo e email para atualizar</param>
+        /// <param name="cliente">JSON com nome completo e email para atualizar</param>
         /// <remarks> Exemplo de requisição:
         /// 
         /// PUT api/Clientes/1
@@ -149,19 +149,19 @@ namespace ApiParanaBanco.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
-        public IActionResult Put(int id, [FromBody] Cliente value)
+        public IActionResult Put(int id, [FromBody] Cliente cliente)
         {
             try
             {
                 //validação de dados
-                value.ValidarEmail(value);
-                value.ValidarNome(value);
+                cliente.ValidarEmail(cliente.Email);
+                cliente.ValidarNome(cliente.Nome);
 
                 //verificar se existe um cliente cadastrado pelo ID
                 Cliente? clienteOld = Clientes.FirstOrDefault(c => c.Id == id);
 
                 //verificar se o email que está tentando cadastrar já existe na base de dados
-                if (Clientes.FirstOrDefault(c => c.Email == value.Email) != null)
+                if (Clientes.FirstOrDefault(c => c.Email == cliente.Email) != null)
                 {
                     return Unauthorized("Já existe um cliente cadastrado com este Email.");
                 }
@@ -169,8 +169,8 @@ namespace ApiParanaBanco.Controllers
                 if (clienteOld != null)
                 {
                     Clientes.Remove(clienteOld);
-                    value.Id = id;
-                    Clientes.Add(value);
+                    cliente.Id = id;
+                    Clientes.Add(cliente);
                     return Ok();
                 }
                 else return BadRequest("Cliente não encontrado na base de dados.");
